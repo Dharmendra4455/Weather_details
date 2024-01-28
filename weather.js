@@ -2,6 +2,7 @@
 var key="3ZTHD37XTXRRMEX3EHA6VKMTW";
  async function weatherfun(){
     var city_name=document.getElementById("input").value;
+    var city_length=city_name.length;
   //  console.log(city_name);
     var data=await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city_name}?unitGroup=metric&key=${key}&contentType=json`);
     if(data.status==400){
@@ -17,7 +18,11 @@ var key="3ZTHD37XTXRRMEX3EHA6VKMTW";
     var temp=Math.round(data2.currentConditions.temp);
     var city_name=data2.address.toUpperCase();
     document.getElementById("temp").innerHTML=temp+"<sup>o</sup>C";
-    document.getElementById("city_name").innerHTML=city_name;
+    if(city_length==1||city_length==2||city_length==3){
+    document.getElementById("city_name").innerHTML=city_name + ", "+data2.resolvedAddress;}
+    else{
+        document.getElementById("city_name").innerHTML=city_name;
+    }
     document.querySelector(".humidityvalue").innerHTML=Math.round(data2.currentConditions.humidity)+"%";
     document.querySelector(".wind").innerHTML=innerHTML=Math.round(data2.currentConditions.windspeed)+"Km/h";
     var icon=data2.currentConditions.icon;
