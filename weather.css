@@ -1,7 +1,11 @@
 
     body{
+        height:98.5vh;
         margin:0px;
         padding: 0px;
+        background-image: linear-gradient(160deg,orange,yellow,green,blue,violet);
+        background-size: cover;
+        background-repeat: no-repeat;
     }
     .container{
         padding: 10px;
